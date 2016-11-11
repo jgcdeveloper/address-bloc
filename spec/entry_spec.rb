@@ -28,7 +28,14 @@ RSpec.describe Entry do
     it "reports its email" do
       expect(entry.email).to eq('none@none.com')
     end
+  end
 
+  describe "#to_s" do
+    it "prints an entry as a string" do
+      entry = Entry.new('Lucian Darteel', '000.000.0000', 'none@none.com')
+      expected_string = "Name: Lucian Darteel\nPhone Number: 000.000.0000\nEmail: none@none.com"
+      expect(entry.to_s).to eq(expected_string)
+    end
   end
 
 end
