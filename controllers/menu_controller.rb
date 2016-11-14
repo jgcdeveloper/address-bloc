@@ -17,8 +17,51 @@ require_relative '../models/address_book'
      # Note that print does not go to a new line, whereas puts does. Only diff.
      print "Enter your selection: "
 
+     #Gets a selection from the user
      selection = gets.to_i
-     puts "You picked #{selection}"
+
+     #Case based on selectors
+     case selection
+
+        when 1
+           system "clear"
+           view_all_entries
+           main_menu
+        when 2
+           system "clear"
+           create_entry
+           main_menu
+        when 3
+           system "clear"
+           search_entries
+           main_menu
+        when 4
+           system "clear"
+           read_csv
+           main_menu
+        when 5
+           puts "Goodbye!"
+
+           #Tells the program to exit without an error
+           exit(0)
+        else
+           system "clear"
+           puts "Sorry... Not a valid selection :()"
+           main_menu
+     end
+
+   end
+
+   def view_all_entries
+   end
+
+   def create_entry
+   end
+
+   def search_entries
+   end
+
+   def read_csv
    end
 
  end
