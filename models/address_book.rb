@@ -47,7 +47,7 @@ require 'csv'
     def binary_search(name)
       lower = 0
       upper = entries.length - 1
-      
+
       while lower <= upper
         mid = (lower + upper) / 2
         mid_name = entries[mid].name
@@ -64,4 +64,24 @@ require 'csv'
       return nil
 
     end
+
+
+    def iterative_search(name)
+
+      $i = 0
+      $total_entries = entries.length
+
+      until $i == $total_entries
+
+      if entries[$i].name == name
+        return entries[$i]
+      end
+
+      $i += 1
+      end
+
+      return nil
+
+    end
+
   end
