@@ -14,7 +14,8 @@ require 'io/console'
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View Entry Number #"
+     puts "6 - Exit"
      # Note that print does not go to a new line, whereas puts does. Only diff.
      print "Enter your selection: "
 
@@ -41,6 +42,10 @@ require 'io/console'
            read_csv
            main_menu
         when 5
+           system "clear"
+           view_entry_number
+           main_menu
+        when 6
            puts "Goodbye!"
 
            #Tells the program to exit without an error
@@ -95,6 +100,27 @@ require 'io/console'
 
    def read_csv
 
+   end
+
+   def view_entry_number
+      print "Which entry do you wish to view?: "
+      entrynum = gets.chomp
+
+      #check if our number is an integer, if so accept, if not prompt for another number
+      begin
+      number = Integer(entrynum)
+         rescue ArgumentError
+            puts "Invalid Number... Press a key to continue"
+            STDIN.getch
+            system "clear"
+            view_entry_number
+      end
+
+      puts "You selected to see entry number #{number}. Press a key to continue"
+      STDIN.getch
+      system "clear"
+      main_menu
+      
    end
 
    def entry_submenu(entry)

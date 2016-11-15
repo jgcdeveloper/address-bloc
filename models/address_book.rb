@@ -20,6 +20,8 @@ require_relative 'entry'
       entries.insert(index, Entry.new(name, phone_number, email) )
     end
 
+    ## Note try to refactor to not mutate array during loop
+    
     def remove_entry(name, phone_number, email)
       index = 0
       entries.each do |entry|
