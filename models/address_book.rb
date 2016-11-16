@@ -32,6 +32,10 @@ require 'csv'
       end
     end
 
+    def remove_all
+      @entries = []  
+    end
+
     def import_from_csv(file_name)
       # To impliment
       csv_text = File.read(file_name)
@@ -47,7 +51,7 @@ require 'csv'
     def binary_search(name)
       lower = 0
       upper = entries.length - 1
-      
+
       while lower <= upper
         mid = (lower + upper) / 2
         mid_name = entries[mid].name

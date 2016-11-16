@@ -14,7 +14,8 @@ class MenuController
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - Delete all Entries **WARNING**"
+     puts "6 - Exit"
      # Note that print does not go to a new line, whereas puts does. Only diff.
      print "Enter your selection: "
 
@@ -41,8 +42,11 @@ class MenuController
            read_csv
            main_menu
         when 5
+           system "clear"
+           ragnarok
+           main_menu
+        when 6
            puts "Goodbye!"
-
            #Tells the program to exit without an error
            exit(0)
         else
@@ -149,6 +153,26 @@ class MenuController
       rescue
          puts "#{file_name} is not a valid CSV. Please enter a valid CSV"
          read_csv
+      end
+   end
+
+   def ragnarok
+      print "You chose to delete all entries... Are you sure?? <Type Y if Sure>: "
+      choice = STDIN.getch
+      if choice == 'Y'
+         system "clear"
+         address_book.remove_all
+         puts "All entries deleted. Press a key to return to main menu"
+         STDIN.getch
+         system "clear"
+         main_menu
+
+      else
+         system "clear"
+         puts "Confirmation not recieved... press a key to return to main menu"
+         STDIN.getch
+         system "clear"
+         main_menu
       end
    end
 
